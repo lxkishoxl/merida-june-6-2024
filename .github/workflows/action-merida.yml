@@ -71,6 +71,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
+      - name: Refresh files 
+        run:
+          git pull
 
       - name: imprimir tabla bruta y neta
         run: |

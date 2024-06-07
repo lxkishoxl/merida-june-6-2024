@@ -19,6 +19,14 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+      
+      - name: descargar data
+        run: |
+          curl -sL "https://companiesmarketcap.com/software/largest-software-companies-by-market-cap/?download=csv" -o companies-all.csv
+          if [ ! -s companies-all.csv ]; then
+            echo "Downloaded CSV file is empty"
+            exit 1
+          fi    
 
       - name: crear tablas por pais
         run: |
@@ -64,3 +72,5 @@ jobs:
         run: |
           echo "tabla desde Empreses Inglesas"
           cat companies_united_kingdom.csv
+
+
